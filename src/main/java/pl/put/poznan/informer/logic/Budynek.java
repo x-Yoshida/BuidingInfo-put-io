@@ -6,7 +6,7 @@ import java.util.List;
 public class Budynek extends Lokacja{
 
     private List<Poziom> poziomy = new ArrayList<Poziom>();
-     public Budynek(int id, String nazwa) {
+    public Budynek(int id, String nazwa) {
          super(id, nazwa);
      }
     public Budynek(int id) {
@@ -25,6 +25,14 @@ public class Budynek extends Lokacja{
         double sum = 0;
         for (Poziom poziom : poziomy) {
             sum += poziom.getPowierzchnia();
+        }
+        return sum;
+    }
+
+    public double getKubatura() {
+        double sum = 0;
+        for (Poziom poziom : poziomy) {
+            sum += poziom.getKubatura();
         }
         return sum;
     }

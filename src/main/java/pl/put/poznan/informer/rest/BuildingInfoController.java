@@ -25,6 +25,7 @@ public class BuildingInfoController {
         for (int i = 1; i < 6; i++){
             Pomieszczenie p = new Pomieszczenie(100+i);
             p.setPowierzchnia(20);
+            p.setKubatura(p.getPowierzchnia()*3);
             db.add(p);
             poz10.addPomieszczenia(p);
         }
@@ -36,6 +37,7 @@ public class BuildingInfoController {
         for (int i = 1; i < 4; i++){
             Pomieszczenie p = new Pomieszczenie(110+i);
             p.setPowierzchnia(i*10+20);
+            p.setKubatura(p.getPowierzchnia()*3);
             db.add(p);
             poz11.addPomieszczenia(p);
         }
@@ -49,25 +51,43 @@ public class BuildingInfoController {
         for (int i = 1; i < 6; i++){
             Pomieszczenie p = new Pomieszczenie(200+i);
             p.setPowierzchnia(40);
+            p.setKubatura(p.getPowierzchnia()*4);
             db.add(p);
             poz20.addPomieszczenia(p);
         }
     }
     @GetMapping(value = "/get_powierzchnia/{id}", produces = "application/json")
-    public ResponseEntity<String> getAreaById(@PathVariable int id) {
+    public ResponseEntity<String> getPowierzchniaById(@PathVariable int id) {
         logger.debug("Get_powierzchnia, id: {}", id);
 
         Lokacja lokacja = db.getObjectById(id);
         if (lokacja != null) {
             JSONObject responseJson = new JSONObject();
-            responseJson.put("area", lokacja.getPowierzchnia());
+            responseJson.put("powierzchnia", lokacja.getPowierzchnia());
 
             logger.debug(responseJson.toString());
             return ResponseEntity.ok(responseJson.toString());
         }
 
-        logger.debug("Id_not_found");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id_not_found");
+        logger.debug("Nie znaleziono podanego id");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono podanego id");
+    }
+
+    @GetMapping(value = "/get_kubatura/{id}", produces = "application/json")
+    public ResponseEntity<String> getKubaturaById(@PathVariable int id) {
+        logger.debug("Get_kubatura, id: {}", id);
+
+        Lokacja lokacja = db.getObjectById(id);
+        if (lokacja != null) {
+            JSONObject responseJson = new JSONObject();
+            responseJson.put("kubatura", lokacja.getKubatura());
+
+            logger.debug(responseJson.toString());
+            return ResponseEntity.ok(responseJson.toString());
+        }
+
+        logger.debug("Nie znaleziono podanego id");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono podanego id");
     }
 
 

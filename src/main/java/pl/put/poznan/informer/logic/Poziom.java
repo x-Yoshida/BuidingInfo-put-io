@@ -26,4 +26,12 @@ public class Poziom extends Lokacja {
         return sum;
     }
 
+    public double getKubatura() {
+        double sum = 0;
+        for (Pomieszczenie pomieszczenie : pomieszczenia) {
+            sum += pomieszczenie.getKubatura();
+        }
+        return sum;
+    }
+
 }

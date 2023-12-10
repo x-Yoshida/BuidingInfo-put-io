@@ -28,4 +28,5 @@ public abstract class Lokacja {
     }
 
     public abstract double getPowierzchnia();
+    public abstract double getKubatura();
 }
