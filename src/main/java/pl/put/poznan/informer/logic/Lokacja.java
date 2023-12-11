@@ -1,5 +1,16 @@
 package pl.put.poznan.informer.logic;
-
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Budynek.class, name = "budynek"),
+        @JsonSubTypes.Type(value = Poziom.class, name = "poziom"),
+        @JsonSubTypes.Type(value = Pomieszczenie.class, name = "pomieszczenie")
+})
 public abstract class Lokacja {
     private int id;
     private String nazwa;
@@ -16,16 +27,7 @@ public abstract class Lokacja {
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getNazwa() {
-        return nazwa;
-    }
-    public void setNazwa (String nazwa) {
-        this.nazwa = nazwa;
-    }
 
     public abstract double getPowierzchnia();
     public abstract double getKubatura();
