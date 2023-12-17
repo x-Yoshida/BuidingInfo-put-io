@@ -15,11 +15,17 @@ public abstract class Lokacja {
     private int id;
     private String nazwa;
 
+
+    /**
+     * Konstruktor klasy Lokacja
+     */
     public Lokacja(int id, String nazwa) {
         this.id = id;
         this.nazwa = nazwa;
     }
-
+    /**
+     * Konstruktor klasy Lokacja
+     */
     public Lokacja(int id) {
         this.id = id;
     }

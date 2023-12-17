@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 
+/**
+ * Implementacja klasy BuildingInfoController
+ */
 @RestController
 @RequestMapping("/building")
 public class BuildingInfoController {
