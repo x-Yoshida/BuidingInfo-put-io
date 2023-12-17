@@ -3,13 +3,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implenentacja BazyDanych
- * @version 0.1
- * @author Gamma
+ * Implenentacja klasy BazaDanych
  */
 public class BazaDanych {
     private List<Lokacja> obiekty = new ArrayList<>();
 
+    /**
+     * @param lokacja - lokacja która ma zostać dodana do listy lokacji
+     */
     public void add(Lokacja lokacja) {
         this.obiekty.add(lokacja);
     }

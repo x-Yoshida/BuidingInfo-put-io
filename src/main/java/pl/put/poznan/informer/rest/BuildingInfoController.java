@@ -8,13 +8,20 @@ import pl.put.poznan.informer.logic.*;
 import org.json.JSONObject;
 
 
+/**
+ * Implementacja klasy BuildingInfoController
+ */
 @RestController
 
 public class BuildingInfoController {
 
+
     BazaDanych db = new BazaDanych();
     private static final Logger logger = LoggerFactory.getLogger(BuildingInfoController.class);
 
+    /**
+     * Konstruktor klasy BuildingInfoController
+     */
     public  BuildingInfoController(){
         Budynek bud1 = new Budynek(1, "Blok");
         Poziom poz10 = new Poziom(10, "Parter");
@@ -56,6 +63,10 @@ public class BuildingInfoController {
             poz20.addPomieszczenia(p);
         }
     }
+
+    /**
+     * Funkcja wczytuje z pliku json powierzchnię danej lokacji o danym id
+     */
     @GetMapping(value = "/get_powierzchnia/{id}", produces = "application/json")
     public ResponseEntity<String> getPowierzchniaById(@PathVariable int id) {
         logger.debug("Get_powierzchnia, id: {}", id);
@@ -72,7 +83,9 @@ public class BuildingInfoController {
         logger.debug("Nie znaleziono podanego id");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono podanego id");
     }
-
+    /**
+     * Funkcja wczytuje z pliku json kubaturę danej lokacji o danym id
+     */
     @GetMapping(value = "/get_kubatura/{id}", produces = "application/json")
     public ResponseEntity<String> getKubaturaById(@PathVariable int id) {
         logger.debug("Get_kubatura, id: {}", id);

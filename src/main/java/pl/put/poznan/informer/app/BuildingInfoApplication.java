@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Glowna klasa projektu, odpowiedzialna za uruchamianie programu
- * @version 0.1
- * @author Gamma
 */
 
 @SpringBootApplication(scanBasePackages = {"pl.put.poznan.informer.rest"})
