@@ -1,7 +1,7 @@
 package pl.put.poznan.informer.logic;
 
 /**
- * This is just an example to show that the logic should be outside the REST service.
+ * Implementacja klasy BuildingInfo
  */
 public class BuildingInfo {
 

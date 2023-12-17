@@ -1,6 +1,10 @@
 package pl.put.poznan.informer.logic;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+/**
+ * Implementacja abstrakcyjnej klasy Lokacja
+ */
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
@@ -11,6 +15,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = Poziom.class, name = "poziom"),
         @JsonSubTypes.Type(value = Pomieszczenie.class, name = "pomieszczenie")
 })
+
+
 public abstract class Lokacja {
     private int id;
     private String nazwa;

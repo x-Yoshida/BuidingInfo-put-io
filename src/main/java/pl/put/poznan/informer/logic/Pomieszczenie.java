@@ -1,6 +1,10 @@
 package pl.put.poznan.informer.logic;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * Implementacja klasy Pomieszczenie
+ */
 public class Pomieszczenie extends Lokacja{
     private double powierzchnia;
     private double kubatura;
