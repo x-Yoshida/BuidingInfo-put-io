@@ -43,4 +43,10 @@ public abstract class Lokacja {
 
     public abstract double getPowierzchnia();
     public abstract double getKubatura();
+
+    public abstract double getLight();
+    public abstract double getLightPower();
+
+    public abstract double getHeating();
+    public abstract double getHeatingPower();
 }

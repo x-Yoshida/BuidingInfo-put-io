@@ -142,7 +142,109 @@ public class BuildingInfoController {
     }
 
 
-    @GetMapping("/get_kubatura/{buildingId}/{floorId}/{roomId}")
+    @GetMapping(value = "/get_light_power/{buildingId}", produces = "application/json")
+    public ResponseEntity<String> getBuildingLightPower(@PathVariable int buildingId) {
+        logger.debug("Get_light_power, id: {}", buildingId);
+
+        Lokacja lokacja = db.getObjectById(buildingId);
+        if (lokacja != null) {
+            JSONObject responseJson = new JSONObject();
+            responseJson.put("light", lokacja.getLight());
+
+            logger.debug(responseJson.toString());
+            return ResponseEntity.ok(responseJson.toString());
+        }
+
+        logger.debug("Nie znaleziono podanego id");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono podanego id");
+    }
+
+    @GetMapping("/get_light_power/{buildingId}/{floorId}")
+    public ResponseEntity<String> getFloorLightPower(@PathVariable int buildingId, @PathVariable int floorId) {
+        Budynek budynek = (Budynek) db.getObjectById(buildingId);
+
+        if (budynek != null) {
+            Poziom poziom = budynek.getPoziomById(floorId);
+
+            if (poziom != null) {
+                JSONObject responseJson = new JSONObject();
+                responseJson.put("light", poziom.getLight());
+                return ResponseEntity.ok(responseJson.toString());
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono poziomu o id: " + floorId);
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono budynku o id: " + buildingId);
+        }
+    }
+
+
+    @GetMapping("/get_light_power/{buildingId}/{floorId}/{roomId}")
+    public ResponseEntity<String> getRoomLightPower(
+            @PathVariable int buildingId,
+            @PathVariable int floorId,
+            @PathVariable int roomId) {
+        Budynek budynek = (Budynek) db.getObjectById(buildingId);
+
+        if (budynek != null) {
+            Poziom poziom = budynek.getPoziomById(floorId);
+
+            if (poziom != null) {
+                Pomieszczenie pomieszczenie = poziom.getPomieszczenieById(roomId);
+
+                if (pomieszczenie != null) {
+                    JSONObject responseJson = new JSONObject();
+                    responseJson.put("light", pomieszczenie.getLight());
+                    return ResponseEntity.ok(responseJson.toString());
+                } else {
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono pomieszczenia o id: " + roomId);
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono poziomu o id: " + floorId);
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono budynku o id: " + buildingId);
+        }
+    }
+
+    @GetMapping(value = "/get_heating_power/{buildingId}", produces = "application/json")
+    public ResponseEntity<String> getBuildingHeatingPower(@PathVariable int buildingId) {
+        logger.debug("Get_heating_power, id: {}", buildingId);
+
+        Lokacja lokacja = db.getObjectById(buildingId);
+        if (lokacja != null) {
+            JSONObject responseJson = new JSONObject();
+            responseJson.put("heating", lokacja.getHeating());
+
+            logger.debug(responseJson.toString());
+            return ResponseEntity.ok(responseJson.toString());
+        }
+
+        logger.debug("Nie znaleziono podanego id");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono podanego id");
+    }
+
+    @GetMapping("/get_heating_power/{buildingId}/{floorId}")
+    public ResponseEntity<String> getFloorHeatingPower(@PathVariable int buildingId, @PathVariable int floorId) {
+        Budynek budynek = (Budynek) db.getObjectById(buildingId);
+
+        if (budynek != null) {
+            Poziom poziom = budynek.getPoziomById(floorId);
+
+            if (poziom != null) {
+                JSONObject responseJson = new JSONObject();
+                responseJson.put("heating", poziom.getHeating());
+                return ResponseEntity.ok(responseJson.toString());
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono poziomu o id: " + floorId);
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono budynku o id: " + buildingId);
+        }
+    }
+
+
+    @GetMapping("/get_heating_power/{buildingId}/{floorId}/{roomId}")
     public ResponseEntity<String> getRoomCube(
             @PathVariable int buildingId,
             @PathVariable int floorId,
@@ -157,7 +259,7 @@ public class BuildingInfoController {
 
                 if (pomieszczenie != null) {
                     JSONObject responseJson = new JSONObject();
-                    responseJson.put("kubatura", pomieszczenie.getKubatura());
+                    responseJson.put("heating", pomieszczenie.getHeating());
                     return ResponseEntity.ok(responseJson.toString());
                 } else {
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono pomieszczenia o id: " + roomId);
@@ -169,6 +271,7 @@ public class BuildingInfoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nie znaleziono budynku o id: " + buildingId);
         }
     }
+
 
 
 }

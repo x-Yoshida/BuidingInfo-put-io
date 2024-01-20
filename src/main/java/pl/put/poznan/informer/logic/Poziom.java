@@ -52,4 +52,60 @@ public class Poziom extends Lokacja {
         return sum;
     }
 
+    /**
+     * Funkcja zwracajaca stosunek mocy oswietlenia na poziomie budynku w stosunku do jego powierzchni
+     * @return stosunek mocy oswietlenia do powierzchni poziomy
+     */
+    @Override
+    public double getLight() {
+        double arr = 0;
+        double pow = 0;
+        for (Pomieszczenie pomieszczenie : pomieszczenia) {
+            arr += pomieszczenie.getPowierzchnia();
+            pow += pomieszczenie.getLightPower();
+        }
+        return pow/arr;
+    }
+
+    /**
+     * Funkcja zwracajaca sume mocy oswietlenia wszystkich pomimeszczen na danym poziomie
+     * @return suma mocy oswietlenia pomieszczen na poziomie
+     */
+    @Override
+    public double getLightPower() {
+        double sum = 0;
+        for (Pomieszczenie pomieszczenie : pomieszczenia) {
+            sum +=  pomieszczenie.getLightPower();
+        }
+        return sum;
+    }
+
+    /**
+     * Funkcja zwracajaca stosunek zuzycia energii na ogrzewanie w przeliczeniu na jednostke objetosci poziomu budynku
+     * @return stosunek zuzycia energii do objetosci poziomu budynku
+     */
+    @Override
+    public double getHeating() {
+        double arr = 0;
+        double pow = 0;
+        for (Pomieszczenie pomieszczenie : pomieszczenia) {
+            arr += pomieszczenie.getKubatura();
+            pow += pomieszczenie.getHeatingPower();
+        }
+        return pow/arr;
+    }
+
+    /**
+     * Funkcja zwracajaca sume zuzycia energii na ogrzewanie danego poziomu budynku
+     * @return suma zuzycia energii na ogrzewanie
+     */
+    @Override
+    public double getHeatingPower() {
+        double sum = 0;
+        for (Pomieszczenie pomieszczenie : pomieszczenia) {
+            sum +=  pomieszczenie.getHeatingPower();
+        }
+        return sum;
+    }
+
 }
