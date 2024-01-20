@@ -17,7 +17,7 @@ Aplikacja dla administratorów budynków, którzy pragną optymalizować koszty 
   - light – łączna moc oświetlenia
 
 ## Odnośnik do rejestru sprintu
-[Rejestr sprintu #1](https://docs.google.com/spreadsheets/d/1vD5kCNpu1AaS7Yg6SuydPlxsmSxl1GRFZ1s5OZPF3UI/edit?usp=sharing)
+[Rejestr sprintu #1 i #2](https://docs.google.com/spreadsheets/d/1vD5kCNpu1AaS7Yg6SuydPlxsmSxl1GRFZ1s5OZPF3UI/edit?usp=sharing)
 
 ## Odnośnik do rejestru produktu
 [Rejestr produktu](https://trello.com/b/QdiDMirc/rejestr-produktu)
