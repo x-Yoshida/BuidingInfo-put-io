@@ -22,6 +22,13 @@ Aplikacja dla administratorów budynków, którzy pragną optymalizować koszty 
 ## Odnośnik do rejestru produktu
 [Rejestr produktu](https://trello.com/b/QdiDMirc/rejestr-produktu)
 
+## Retrospektywa
+
+Akcje naprawcze:
+* Wprowadzenie regularnych spotkań, na których członkowie zespołu dzielą się aktualnym postępem i identyfikują potencjalne problemy.
+* Dokładniejsza ocena zasobów i zdolności zespołu przy planowaniu sprintu, aby uniknąć przeciążenia pracą.
+
+
 ## Dokumentacja API
 
 * [POST]/building/add
